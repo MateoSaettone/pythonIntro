@@ -42,9 +42,9 @@ def main():
     mortality = calculateMortality(deaths, population)
 
     # Printing results
-    print(f"Illness A Prevalence: {prevalence:.2f} per 100,000")
-    print(f"Illness A Incidence: {incidence:.2f} per 100,000")
-    print(f"Illness A Mortality Rate: {mortality:.2f} per 100,000")
+    print(f"Prevalence: {prevalence:.2f} per 100,000")
+    print(f"Incidence: {incidence:.2f} per 100,000")
+    print(f"Mortality Rate: {mortality:.2f} per 100,000")
     
     if input("Calculate Years of Potential Life Lost? (y/n): ") == "y":
         calculateLifeLost()
