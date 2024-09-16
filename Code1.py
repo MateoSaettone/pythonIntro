@@ -26,7 +26,7 @@ def calculateLifeLost():
     n = int(input("Amount of age data points: "))
     yearsLost = 0
     for i in range(0, n):
-        yearsLost += lifeExpectancy - int(input(f"Age Data Point {i}: "))
+        yearsLost += lifeExpectancy - int(input(f"Age Data Point {i + 1}: "))
     
     print(f"Years of Potential Life Lost: {yearsLost}")
 
