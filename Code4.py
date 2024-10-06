@@ -7,12 +7,12 @@
 #                                          #
 ############################################
 
-# Function 1: Celsius to Fahrenheit Conversion
+# Celsius to Fahrenheit Conversion
 def celsius_to_fahrenheit(celsius):
     fahrenheit = (celsius * 9/5) + 32
     return fahrenheit
 
-# Function 2: Fahrenheit to Celsius Conversion
+# Fahrenheit to Celsius Conversion
 def fahrenheit_to_celsius(fahrenheit):
     celsius = (fahrenheit - 32) * 5/9
     return celsius
@@ -23,7 +23,7 @@ def main():
     print("C - Celsius to Fahrenheit")
     print("F - Fahrenheit to Celsius")
 
-    choice = input("Enter your choice (C/F): ").lower()  # Convert choice to lowercase to handle both 'C' and 'c', 'F' and 'f'
+    choice = input("Enter your choice (C/F): ").lower()
 
     if choice == 'c':
         celsius = float(input("Enter the temperature in Celsius: "))
