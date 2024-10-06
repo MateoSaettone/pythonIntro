@@ -7,75 +7,51 @@
 #                                          #
 ############################################
 
-# Problem 1: Greeting Message
-def greetingMessage():
-    name = input("Enter your name: ")
-    print(f"Hello, {name}! Nice to meet you.")
+# Functions to calculate Prevalence, Incidence, Mortality, and Years of life lost
 
-# Problem 2: Reversed String
-def reversedString():
-    word = input("Enter a word: ")
-    print(f"Reversed: {word[::-1]}")
+def calculatePrevalence(totalCases, population):
+    prevalence = (totalCases / population) * 100000
+    return prevalence
 
-# Problem 3: String Length
-def stringLength():
-    sentence = input("Enter a sentence: ")
-    print(f"The sentence has {len(sentence)} characters.")
+def calculateIncidence(newCases, population):
+    incidence = (newCases / population) * 100000
+    return incidence
 
-# Problem 4: Vowel Count
-def countVowels():
-    input_string = input("Enter a word or sentence: ").lower()
-    vowels = ['a', 'e', 'i', 'o', 'u']  
-    vowel_count = 0
+def calculateMortality(deaths, population):
+    mortality_rate = (deaths / population) * 100000
+    return mortality_rate
+
+def calculateLifeLost():
+    lifeExpectancy = int(input("Enter the life expectancy: "))
+    n = int(input("Amount of age data points: "))
+    yearsLost = 0
+    for i in range(0, n):
+        yearsLost += lifeExpectancy - int(input(f"Age Data Point {i + 1}: "))
     
-    for char in input_string:
-        if char in vowels:  
-            vowel_count += 1
-    
-    print(f"Number of vowels: {vowel_count}")
+    print(f"Years of Potential Life Lost: {yearsLost}")
 
-# Problem 5: Palindrome Check
-def palindromeCheck():
-    word = input("Enter a word: ").lower()
-    if word == word[::-1]:
-        print("The word is a palindrome.")
-    else:
-        print("The word is not a palindrome.")
+# Main function to handle input, calculations and printing results
 
-# Problem 6: Secret Message
-def secretMessage():
-    message = input("Enter your secret message: ")
-    encrypted_message = message.upper()
-    encrypted_message = message.upper().replace(" ", "_")
-    print(f"Encrypted secret message: {encrypted_message}")
-
-# Main function with a single run based on user's choice
 def main():
-    print("Menu:")
-    print("1. Greeting Message")
-    print("2. Reversed String")
-    print("3. String Length")
-    print("4. Vowel Count")
-    print("5. Palindrome Check")
-    print("6. Secret Message")
+    totalCases = int(input("Total cases: "))
+    population = float(input("Total population: "))
+    newCases = int(input("New cases: "))
+    deaths = int(input("Deaths: "))
 
-    choice = input("Choose an option (1-6): ")
+    # Calculating Disease Statistics
+    prevalence = calculatePrevalence(totalCases, population)
+    incidence = calculateIncidence(newCases, population)
+    mortality = calculateMortality(deaths, population)
 
-    if choice == "1":
-        greetingMessage()
-    elif choice == "2":
-        reversedString()
-    elif choice == "3":
-        stringLength()
-    elif choice == "4":
-        countVowels()
-    elif choice == "5":
-        palindromeCheck()
-    elif choice == "6":
-        secretMessage()
+    # Printing results
+    print(f"Prevalence: {prevalence:.2f} per 100,000")
+    print(f"Incidence: {incidence:.2f} per 100,000")
+    print(f"Mortality Rate: {mortality:.2f} per 100,000")
     
-main()
+    if input("Calculate Years of Potential Life Lost? (y/n): ") == "y":
+        calculateLifeLost()
 
+main()
 
     
 
