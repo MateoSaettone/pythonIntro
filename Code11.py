@@ -45,11 +45,13 @@ average_age = sum(ages) / len(ages)
 average_temp = sum(temperatures) / len(temperatures)
 
 # convert bp readings to tuples for comparison
-def bp_to_tuple(bp_str):
-    systolic, diastolic = bp_str.split('/')
-    return int(systolic), int(diastolic)
+bp_tuples = []
 
-bp_tuples = [bp_to_tuple(bp) for bp in blood_pressures]
+for bp_str in blood_pressures:
+    systolic_diastolic = bp_str.split('/')
+    systolic = int(systolic_diastolic[0])
+    diastolic = int(systolic_diastolic[1])
+    bp_tuples.append((systolic, diastolic))
 
 # find highest and lowest bp
 highest_bp = max(bp_tuples)

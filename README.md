@@ -1,2 +1,0 @@
-# pythonIntro
-Python Class
