@@ -13,12 +13,12 @@ with open('Week13Assignment.txt', 'r') as file:
 
 # initialize lists and counters
 ages = []
-male_count = 0
-female_count = 0
-blood_pressures = []
+maleCount = 0
+femaleCount = 0
+bloodPressures = []
 temperatures = []
 
-# parse each line, skip the header
+# parse each line (skip header)
 for line in lines[1:]:
     # split line into fields
     fields = line.strip().split(',')
@@ -32,40 +32,39 @@ for line in lines[1:]:
     # collect data
     ages.append(age)
     temperatures.append(temp)
-    blood_pressures.append(bp)
+    bloodPressures.append(bp)
 
     # count genders
     if gender.lower() == 'male':
-        male_count += 1
+        maleCount += 1
     elif gender.lower() == 'female':
-        female_count += 1
+        femaleCount += 1
 
 # calculate averages
-average_age = sum(ages) / len(ages)
-average_temp = sum(temperatures) / len(temperatures)
+averageAge = sum(ages) / len(ages)
+averageTemp = sum(temperatures) / len(temperatures)
 
 # convert bp readings to tuples for comparison
-bp_tuples = []
-
-for bp_str in blood_pressures:
-    systolic_diastolic = bp_str.split('/')
-    systolic = int(systolic_diastolic[0])
-    diastolic = int(systolic_diastolic[1])
-    bp_tuples.append((systolic, diastolic))
+bpTuples = []
+for bpStr in bloodPressures:
+    systolicDiastolic = bpStr.split('/')
+    systolic = int(systolicDiastolic[0])
+    diastolic = int(systolicDiastolic[1])
+    bpTuples.append((systolic, diastolic))
 
 # find highest and lowest bp
-highest_bp = max(bp_tuples)
-lowest_bp = min(bp_tuples)
+highestBp = max(bpTuples)
+lowestBp = min(bpTuples)
 
 # format bp readings
-highest_bp_str = f"{highest_bp[0]}/{highest_bp[1]}"
-lowest_bp_str = f"{lowest_bp[0]}/{lowest_bp[1]}"
+highestBpStr = f"{highestBp[0]}/{highestBp[1]}"
+lowestBpStr = f"{lowestBp[0]}/{lowestBp[1]}"
 
 # print statistics
-print("Patient Data Statistics:")
-print(f"Average Age: {average_age:.2f}")
-print(f"Males: {male_count}")
-print(f"Females: {female_count}")
-print(f"Highest Blood Pressure: {highest_bp_str}")
-print(f"Lowest Blood Pressure: {lowest_bp_str}")
-print(f"Average Temperature: {average_temp:.2f}")
+print("Patient Data Statistics: \n")
+print(f"AverageAge: {averageAge:.2f}")
+print(f"MalePatients: {maleCount}")
+print(f"FemalePatients: {femaleCount}")
+print(f"HighestBloodPressure: {highestBpStr}")
+print(f"LowestBloodPressure: {lowestBpStr}")
+print(f"AverageTemperature: {averageTemp:.2f}")
